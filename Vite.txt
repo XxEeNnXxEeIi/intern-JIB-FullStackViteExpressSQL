@@ -1,5 +1,70 @@
 * ที่ต้องใช้
-Tailwindcss
-Bootstrap
+Tailwindcss, Bootstrap, Material Bootsrap, jQWidgets
+
+* เริ่มต้น 
+npm create vite@latest myApp -- --template react-ts
+npm install
+
+npm install react-router-dom
+
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+npm install bootstrap
+npm install mdb-ui-kit
+npm install mdb-react-ui-kit
+npm install jqwidgets-scripts
+
+src/style.css หรือ App.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+main.js
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'mdb-ui-kit/css/mdb.min.css';
+import 'mdb-ui-kit/js/mdb.min.js';
+import 'jqwidgets-scripts/jqwidgets/styles/jqx.base.css';
+import './style.css';
+
+==== คำถาม-คำตอบ ====
+
+mdb-ui-kit	Framework-agnostic	No	HTML & JS
+mdb-react-ui-kit	React	Yes	React JSX Components
+
+1. เกี่ยวกับ Vue
+
+* If we use vue do we need Bootstrap
 Material Bootsrap
-jQWidgets
+jQWidgets?
+
+If you are using Vue.js, you do not necessarily need Bootstrap, Material Bootstrap, or jQWidgets, 
+because Vue already provides tools to build modern, clean, and dynamic user interfaces.
+However, you might still choose to use these libraries based on your project requirements.
+
+Vuetify
+PrimeVue
+Element Plus
+Quasar
+
+* vue but no vue what different 
+
+ข้อดี
+Provides a clean, component-based architecture.
+Simplifies DOM manipulation with declarative rendering.
+Comes with built-in tools like reactivity, directives, and event handling.
+Easier state management with tools like Vuex or Pinia.
+Faster development compared to plain JavaScript.
+
+ข้อเสีย
+Adds a layer of abstraction (framework).
+Slightly larger bundle size compared to vanilla projects.
+
+* อธิบายความโดดเด่น
+Bootstrap for simplicity and responsiveness.
+Material Bootstrap for a modern, polished design.
+jQWidgets for advanced data management.
+
+Student Page = Bootstrap	Simple forms, tables, and clean UI.
+Course Page	= Material Bootstrap	Modern UI with cards, tabs, and modals.
+Enroll Page	= jQWidgets	Advanced data grids and complex table features.
