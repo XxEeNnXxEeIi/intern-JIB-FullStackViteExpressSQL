@@ -1,0 +1,68 @@
+npm init -y
+npm install express
+
+jdbc:mysql://localhost3306
+tanachod_school
+dbc_user root
+dbc_password no have password just don't put
+
+CREATE TABLE `course` (
+  `course_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `course_sid` mediumint(5) NOT NULL,
+  `course_n` varchar(150) NOT NULL,
+  `course_red` date NOT NULL,
+  `course_y` smallint(4) NOT NULL,
+  `course_s` tinyint(1) NOT NULL,
+  `course_ed` date NOT NULL,
+  PRIMARY KEY (`course_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `enroll` (
+  `enroll_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `enroll_csid` int(5) NOT NULL,
+  `enroll_csn` varchar(150) NOT NULL,
+  `enroll_stdid` bigint(10) NOT NULL,
+  `enroll_cy` smallint(4) NOT NULL,
+  `enroll_cs` tinyint(1) NOT NULL,
+  `enroll_ced` date NOT NULL,
+  PRIMARY KEY (`enroll_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `student` (
+  `student_id` bigint(10) NOT NULL,
+  `student_firstname` varchar(150) NOT NULL,
+  `student_lastname` varchar(150) NOT NULL,
+  `student_em` varchar(150) NOT NULL,
+  `student_pw` varchar(12) NOT NULL,
+  PRIMARY KEY (`student_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+======= ที่ได้ =======
+
+project/
+├── controllers/ เป็น API ที่ตอบรับ request, response
+│   ├── courseController.js
+│   ├── enrollController.js
+│   └── studentController.js
+├── services/ เป็น Function เชื่อมต่อกับฐานข้อมูล
+│   ├── courseService.js
+│   ├── enrollService.js
+│   └── studentService.js
+├── routes/ ใช้กำหนด get, post, put สำหรับ url ต่อด้วย controller
+│   ├── courseRoutes.js
+│   ├── enrollRoutes.js
+│   └── studentRoutes.js
+├── config/
+│   └── db.js // ใช้กำหนด url เช่น jdbc:mysql://localhost3306
+├── models/
+│   └── dbInit.sql // ใช้กำหนดโครงสร้างภาษา SQL
+├── server.js // ใช้กำหนด url เช่น /api/courses ต่อด้วย routes
+├── package.json 
+
+ขั้นตอนการทำงาน
+server.js > routes > controller > service
+
+Run Migrations (Optional): Use your models/dbInit.sql to initialize the database schema in MySQL:
+mysql -u root < models/dbInit.sql
+
+node server.js
