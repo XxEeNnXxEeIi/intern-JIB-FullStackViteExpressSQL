@@ -1,5 +1,7 @@
 npm init -y
 npm install express
+npm install mysql2 * ใช้สำหรับ mysql driver
+npm install cors * ใช้สำหรับ Cross-Origin Resource Sharin + เพิ่มใน server.js ด้วย app.use(cors({
 
 jdbc:mysql://localhost3306
 tanachod_school
@@ -59,10 +61,58 @@ project/
 ├── server.js // ใช้กำหนด url เช่น /api/courses ต่อด้วย routes
 ├── package.json 
 
-ขั้นตอนการทำงาน
+* ขั้นตอนการทำงาน
 server.js > routes > controller > service
 
-Run Migrations (Optional): Use your models/dbInit.sql to initialize the database schema in MySQL:
+* สำหรับใช้สร้างฐานข้อมูลหากไม่มี
+Run Migrations (Optional): 
+Use your models/dbInit.sql to initialize the database schema in MySQL:
 mysql -u root < models/dbInit.sql
 
+* คำสั่งเริ่มต้นการทำงาน
 node server.js
+
+* สรุป URL
+
+1. Student
+GET
+http://localhost:3000/api/student
+http://localhost:3000/api/student/:id
+
+POST
+http://localhost:3000/api/student
+
+PUT
+http://localhost:3000/api/student/:id
+
+DELETE
+http://localhost:3000/api/student/:id
+
+2. Course
+GET
+http://localhost:3000/api/course
+http://localhost:3000/api/course/:id
+
+POST
+http://localhost:3000/api/course
+
+PUT
+http://localhost:3000/api/course/:id
+
+DELETE
+http://localhost:3000/api/course/:id
+
+3. Enroll
+
+GET
+http://localhost:3000/api/enroll
+http://localhost:3000/api/enroll/:id
+
+POST
+http://localhost:3000/api/enroll
+
+PUT
+http://localhost:3000/api/enroll/:id
+
+DELETE
+http://localhost:3000/api/enroll/:id

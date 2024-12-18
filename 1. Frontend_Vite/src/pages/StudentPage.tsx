@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 type Student = {
@@ -9,28 +10,39 @@ type Student = {
 };
 
 const StudentPage: React.FC = () => {
-  const [students, setStudents] = useState<Student[]>([
-    { student_id: 1, student_firstname: 'John', student_lastname: 'Doe', student_em: 'john@example.com' },
-    { student_id: 2, student_firstname: 'Jane', student_lastname: 'Smith', student_em: 'jane@example.com' },
-  ]);
-
-  const [formData, setFormData] = useState<Student>({
-    student_id: 0,
+  const [students, setStudents] = useState<Student[]>([]);
+  const [formData, setFormData] = useState<Omit<Student, 'student_id'>>({
     student_firstname: '',
     student_lastname: '',
     student_em: '',
   });
+
+  // Fetch students from the API
+  useEffect(() => {
+    const fetchStudents = async () => {
+      try {
+        const response = await axios.get<Student[]>('http://localhost:3000/api/student');
+        setStudents(response.data);
+      } catch (error) {
+        console.error('Error fetching students:', error);
+      }
+    };
+    fetchStudents();
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.student_firstname && formData.student_lastname && formData.student_em) {
-      setStudents([...students, { ...formData, student_id: students.length + 1 }]);
-      setFormData({ student_id: 0, student_firstname: '', student_lastname: '', student_em: '' });
+    try {
+      const response = await axios.post('http://localhost:3000/api/student', formData);
+      setStudents((prev) => [...prev, response.data]); // Add the new student to the list
+      setFormData({ student_firstname: '', student_lastname: '', student_em: '' });
+    } catch (error) {
+      console.error('Error adding student:', error);
     }
   };
 

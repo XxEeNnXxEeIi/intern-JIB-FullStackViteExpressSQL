@@ -5,6 +5,7 @@ Tailwindcss, Bootstrap, Material Bootsrap, jQWidgets
 npm create vite@latest myApp -- --template react-ts
 npm install
 
+npm install axios
 npm install react-router-dom
 
 npm install -D tailwindcss postcss autoprefixer
