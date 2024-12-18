@@ -8,11 +8,7 @@ const app = express();
 const port = 3000;
 
 // Use CORS with a wildcard for localhost (any port)
-app.use(cors({
-    origin: /http:\/\/localhost:\d+$/, // Matches any localhost port
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
-    credentials: true, // Allow credentials (cookies, etc.)
-  }));
+app.use(cors({ origin: '*' }));
 
 // Middleware
 app.use(express.json());

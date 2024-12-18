@@ -2,7 +2,10 @@
 export default {
   content: [ './src/**/*.{js,ts,jsx,tsx}',],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+      'jib-blue': '#2c3d92', // Add custom color
+    },},
   },
   plugins: [],
 }
