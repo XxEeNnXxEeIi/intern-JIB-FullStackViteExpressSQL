@@ -15,17 +15,19 @@ npm install mdb-ui-kit
 npm install mdb-react-ui-kit
 npm install jqwidgets-scripts
 
-src/style.css หรือ App.css
+* แก้ไข
+- เพิ่มใน src/style.css หรือ index.css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-main.js
+- เพิ่มใน main.js
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'mdb-ui-kit/css/mdb.min.css';
-import 'mdb-ui-kit/js/mdb.min.js';
 import 'jqwidgets-scripts/jqwidgets/styles/jqx.base.css';
-import './style.css';
+
+- เพิ่มใน tailwind.config
+content: [ './src/**/*.{js,ts,jsx,tsx}',],
 
 ==== คำถาม-คำตอบ ====
 

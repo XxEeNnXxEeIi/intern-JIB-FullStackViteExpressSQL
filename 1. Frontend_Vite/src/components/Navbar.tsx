@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';  // Correct import
+import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-gray-800 p-4">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Logo or brand name */}
-        <div className="text-white text-2xl font-bold">
-          <Link to="/">Vengeance Service</Link>
-        </div>
-
+    <nav className="bg-[#2c3d92] p-1">
+      <div className="max-w-7xl mx-auto flex items-center justify-between text-white">
         {/* Menu toggle button for small screens */}
         <div className="sm:hidden">
           <button
@@ -37,26 +32,35 @@ const Navbar: React.FC = () => {
 
         {/* Navbar Links */}
         <div
-          className={`${isMenuOpen ? 'block' : 'hidden'} sm:flex sm:space-x-8 text-white`}
+          className={`${
+            isMenuOpen ? 'block' : 'hidden'
+          } sm:flex sm:space-x-2 w-full sm:w-auto`}
         >
           <Link
             to="/student"
-            className="text-lg hover:text-gray-400 transition duration-300"
+            className="text-white p-1 block text-lg font-semibold hover:bg-orange-600 rounded transition duration-300"
           >
             Student
           </Link>
           <Link
             to="/course"
-            className="text-lg hover:text-gray-400 transition duration-300"
+            className="text-white p-1 block text-lg font-semibold hover:bg-orange-600 rounded transition duration-300"
           >
             Course
           </Link>
           <Link
             to="/enroll"
-            className="text-lg hover:text-gray-400 transition duration-300"
+            className="text-white p-1 block text-lg font-semibold hover:bg-orange-600 rounded transition duration-300"
           >
             Enroll
           </Link>
+        </div>
+
+        {/* User Name aligned to the right */}
+        <div className="ml-auto">
+          <span className="text-white p-1 block text-lg font-semibold hover:bg-orange-600 rounded transition duration-300">
+            สำหรับสมัครงาน JIB @ Internth
+          </span>
         </div>
       </div>
     </nav>
